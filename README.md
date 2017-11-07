@@ -18,18 +18,20 @@ For any update of an existing web scenario, it must first be deleted (manually o
 Here is the list of all variables and their default values :
 ```yaml
 
-z_user: api_ansible                                     #zabbix user to authenticate with API, must have access to the z_default.hostid
+# Authentification to API
+z_user: api_ansible                                     #zabbix user to authenticate with API, must have access to the z_hostid
 z_password: 'strongpassword'                            #zabbix user password
+z_url: 'https://zabbix.mycompany.com/api_jsonrpc.php'   #zabbix URL
 
-z_default:
-    url: 'https://zabbix.mycompany.com/api_jsonrpc.php' #zabbix URL
-    hostid: 10084                                       #hostid of the sourcehost from where the web scenarios will be executed (must be already created)
-    sourcehost: "zabbixproxy01"                         #name of the sourcehost from where the web scenarios will be executed (must be already created)
-    applicationid: 1457                                 #application id of the application (category like) (must be already created)
-    interval: 30                                        #default interval of execution of the web scenarios
-    retries: 5                                          #default maximum number of retries
-    agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36' #useragent used by zabbix
+# Common variables to all webscenarios
+z_hostid: 10084                                         #hostid of the sourcehost from where the web scenarios will be executed (must be already created)
+z_sourcehost: "zabbixproxy01"                           #name of the sourcehost from where the web scenarios will be executed (must be already created)
+z_applicationid: 1457                                   #application id of the application (category like) (must be already created)
+z_interval: 30                                          #default interval of execution of the web scenarios
+z_retries: 5                                            #default maximum number of retries
+z_agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36' #useragent used by zabbix
 
+# Definition of each website to monitor
 z_websites:
     ## Creates a webscenario with two steps (one for http and one for https)
     ## First step checks http://mycompany.com using GET HTTP method, expects 200,301 or 302 as return code, expects string 'Welcome to mycompany website'
@@ -72,14 +74,13 @@ Example playbook file :
       z_user: api_ansible
       z_password: 'strongpassword'
     
-      z_default:
-          url: 'https://zabbix.mycompany.com/api_jsonrpc.php'
-          hostid: 10084
-          sourcehost: "scasrvzbx01pp"
-          applicationid: 1457
-          interval: 30
-          retries: 5
-          agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36'
+      z_url: 'https://zabbix.mycompany.com/api_jsonrpc.php'
+      z_hostid: 10084
+      z_sourcehost: "scasrvzbx01pp"
+      z_applicationid: 1457
+      z_interval: 30
+      z_retries: 5
+      z_agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36'
 
       z_websites:
         - name: 'Our Company Website'

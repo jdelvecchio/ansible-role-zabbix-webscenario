@@ -3,7 +3,7 @@
    "method": "trigger.create",
    "params": {
       "description": "Website {{item.name}} is DOWN",
-      "expression": "{% raw %}{{% endraw %}{{z_default.sourcehost}}:web.test.fail[{{item.name}}].min(3m)}>0",
+      "expression": "{% raw %}{{% endraw %}{{z_sourcehost}}:web.test.fail[{{item.name}}].min(3m)}>0",
       "priority": 4,
       "url": "http://{{item.url}}",
       {% if item.trigger_tags is defined %}

@@ -3,11 +3,11 @@
    "method": "httptest.create",
    "params": {
       "name": "{{item.name}}",
-      "hostid": "{{z_default.hostid}}",
-      "applicationid": "{{z_default.applicationid}}",
-      "delay": "{{z_default.interval}}",
-      "retries": "{{z_default.retries}}",
-      "agent": "{{z_default.agent}}",
+      "hostid": "{{z_hostid}}",
+      "applicationid": "{{z_applicationid}}",
+      "delay": "{{z_interval}}",
+      "retries": "{{z_retries}}",
+      "agent": "{{z_agent}}",
       {% if item.https is defined and item.https == 'yes' %}
       "verify_peer": 1,
       "verify_host": 1,

@@ -1,7 +1,7 @@
 ---
 - name: Requesting API authentification token
   uri:
-    url: "{{z_default.url}}"
+    url: "{{z_url}}"
     return_content: yes
     method: POST
     body: "{{lookup('template','templates/auth.j2')}}"
@@ -24,7 +24,7 @@
 
 - name: Getting IDs of all web scenarios to delete (via Zabbix API)
   uri:
-    url: "{{z_default.url}}"
+    url: "{{z_url}}"
     return_content: yes
     body: "{{lookup('template','templates/get_site.j2')}}"
     body_format: json
@@ -37,7 +37,7 @@
 
 - name: Deleting the supposed absent web scenarios in Zabbix
   uri:
-    url: "{{z_default.url}}"
+    url: "{{z_url}}"
     return_content: yes
     method: POST
     body: "{{lookup('template','templates/del_site.j2')}}"
@@ -50,7 +50,7 @@
 
 - name: Adding web scenarios (zabbix API handles the indepotency)
   uri:
-    url: "{{z_default.url}}"
+    url: "{{z_url}}"
     return_content: yes
     method: POST
     body: "{{lookup('template','templates/add_web.j2')}}"
@@ -64,7 +64,7 @@
 
 - name: Adding associated triggers (zabbix API handles the indepotency)
   uri:
-    url: "{{z_default.url}}"
+    url: "{{z_url}}"
     return_content: yes
     method: POST
     body: "{{lookup('template','templates/add_trigger.j2')}}"
