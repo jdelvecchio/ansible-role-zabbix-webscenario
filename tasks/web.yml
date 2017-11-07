@@ -18,7 +18,7 @@
     - auth
 
 - name: Listing web scenarios flaggued as absent in ansible
-  set_fact: "absent_scenarios={{websites|selectattr('state','equalto','absent')|list}}"
+  set_fact: "absent_scenarios={{z_websites|selectattr('state','equalto','absent')|list}}"
   tags:
     - delete
 
@@ -57,7 +57,7 @@
     body_format: json
     headers:
       Content-Type: "application/json-rpc"
-  with_items: "{{websites}}"
+  with_items: "{{z_websites}}"
   when: "item.state == 'present'"
   tags:
     - add
@@ -71,7 +71,7 @@
     body_format: json
     headers:
       Content-Type: "application/json-rpc"
-  with_items: "{{websites}}"
+  with_items: "{{z_websites}}"
   when: "item.state == 'present'"
   tags:
     - add

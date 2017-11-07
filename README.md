@@ -1,13 +1,13 @@
 # ansible-role-zabbix-webscenario
 
 Ansible role which creates or deletes (NO UPDATE) zabbix web scenarios
-For each entry in the 'websites' variable with state: present, this role will :
+For each entry in the 'z_websites' variable with state: present, this role will :
 
 * Add a web scenario
 * Add a basic step
 * Add a trigger associated to that web scenario
 
-For each entry in the 'websites' variable with state: absent, this role will :
+For each entry in the 'z_websites' variable with state: absent, this role will :
 * Delete the web scenario associated to its name
 * Delete the trigger associated to it
 
@@ -28,8 +28,9 @@ z_default:
     applicationid: 1457                                 #application id of the application (category like) (must be already created)
     interval: 30                                        #default interval of execution of the web scenarios
     retries: 5                                          #default maximum number of retries
+    agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36' #useragent used by zabbix
 
-websites:
+z_websites:
     ## Creates a webscenario with two steps (one for http and one for https)
     ## First step checks http://mycompany.com using GET HTTP method, expects 200,301 or 302 as return code, expects string 'Welcome to mycompany website'
     ## Second step checks https://mycompany.com using GET HTTP method, expects 200,301 or 302 as return code, expects string 'Welcome to mycompany website'
@@ -78,8 +79,9 @@ Example playbook file :
           applicationid: 1457
           interval: 30
           retries: 5
+          agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36'
 
-      websites:
+      z_websites:
         - name: 'Our Company Website'
           url: 'mycompany.com'
           state: present
