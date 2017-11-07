@@ -1,10 +1,10 @@
 ---
 z_user: api_ansible
-z_password: 'strongandindependantpassword'
+z_password: 'strongpassword'
 
-z_url: 'https://myzabbix.com/api_jsonrpc.php'
+z_url: 'https://zabbix.mycompany.com/api_jsonrpc.php'
 z_hostid: 10084
-z_sourcehost: "zabbixwebproxy01"
+z_sourcehost: "zabbixproxy01"
 z_applicationid: 1457
 z_interval: 30
 z_retries: 5
