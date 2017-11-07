@@ -1,0 +1,9 @@
+{
+   "jsonrpc": "2.0",
+   "method": "httptest.delete",
+   "params": [
+      "{{item.json.result|map(attribute='httptestid')|list|join(' ')}}"
+   ],
+   "auth": "{{z_authtoken}}",
+   "id": 1
+}

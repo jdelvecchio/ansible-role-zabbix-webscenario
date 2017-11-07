@@ -1,0 +1,12 @@
+---
+z_user: api_ansible
+z_password: 'strongandindependantpassword'
+
+z_default:
+  url: 'https://myzabbix.com/api_jsonrpc.php'
+  hostid: 10084
+  sourcehost: "zabbixwebproxy01"
+  applicationid: 1457
+  interval: 30
+  retries: 5
+  agent: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36" #userAgent (chose one from the proposed list in zabbix)

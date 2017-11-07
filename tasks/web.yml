@@ -1,0 +1,78 @@
+---
+- name: Requesting API authentification token
+  uri:
+    url: "{{z_default.url}}"
+    return_content: yes
+    method: POST
+    body: "{{lookup('template','templates/auth.j2')}}"
+    body_format: json
+    headers:
+      Content-Type: "application/json-rpc"
+  register: z_firstquery
+  tags:
+    - auth
+
+- name: Parsing the authentification request to extract the token
+  set_fact: "z_authtoken={{z_firstquery.json.result}}"
+  tags:
+    - auth
+
+- name: Listing web scenarios flaggued as absent in ansible
+  set_fact: "absent_scenarios={{websites|selectattr('state','equalto','absent')|list}}"
+  tags:
+    - delete
+
+- name: Getting IDs of all web scenarios to delete (via Zabbix API)
+  uri:
+    url: "{{z_default.url}}"
+    return_content: yes
+    body: "{{lookup('template','templates/get_site.j2')}}"
+    body_format: json
+    headers:
+      Content-Type: "application/json-rpc"
+  with_items: "{{absent_scenarios}}"
+  register: to_delete
+  tags:
+    - delete
+
+- name: Deleting the supposed absent web scenarios in Zabbix
+  uri:
+    url: "{{z_default.url}}"
+    return_content: yes
+    method: POST
+    body: "{{lookup('template','templates/del_site.j2')}}"
+    body_format: json
+    headers:
+      Content-Type: "application/json-rpc"
+  with_items : "{{to_delete.results}}"
+  tags:
+    - delete
+
+- name: Adding web scenarios (zabbix API handles the indepotency)
+  uri:
+    url: "{{z_default.url}}"
+    return_content: yes
+    method: POST
+    body: "{{lookup('template','templates/add_web.j2')}}"
+    body_format: json
+    headers:
+      Content-Type: "application/json-rpc"
+  with_items: "{{websites}}"
+  when: "item.state == 'present'"
+  tags:
+    - add
+
+- name: Adding associated triggers (zabbix API handles the indepotency)
+  uri:
+    url: "{{z_default.url}}"
+    return_content: yes
+    method: POST
+    body: "{{lookup('template','templates/add_trigger.j2')}}"
+    body_format: json
+    headers:
+      Content-Type: "application/json-rpc"
+  with_items: "{{websites}}"
+  when: "item.state == 'present'"
+  tags:
+    - add
+    - trigger
