@@ -18,7 +18,7 @@
             "url": "http://{{item.url}}",
             "status_codes": "{{item.status_codes|default('200')}}",
             "retrieve_mode": "{% if item.method is defined and item.method == 'GET' %}0{% else %}1{% endif %}",
-            {% if item.method is defined %}
+            {% if item.expected is defined %}
             "required": "{{item.expected}}",
             {% endif %}
             "no": 1
