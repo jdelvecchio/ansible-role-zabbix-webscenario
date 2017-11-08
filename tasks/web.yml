@@ -76,3 +76,15 @@
   tags:
     - add
     - trigger
+
+- name: Logging out from Zabbix API
+  uri:
+    url: "{{z_url}}"
+    return_content: yes
+    method: POST
+    body: "{{lookup('template','templates/logout.j2')}}"
+    body_format: json
+    headers:
+      Content-Type: "application/json-rpc"
+  tags:
+    - auth
