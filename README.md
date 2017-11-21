@@ -70,7 +70,7 @@ Example playbook file :
   gather_facts: no
   become: no
   roles:
-    - role: ansible-role-zabbix-web-monitoring
+    - role: ansible-role-zabbix-web-scenario
       z_user: api_ansible
       z_password: 'strongpassword'
     
