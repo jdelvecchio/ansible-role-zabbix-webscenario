@@ -9,8 +9,12 @@
       "retries": "{{z_retries}}",
       "agent": "{{z_agent}}",
       {% if item.https is defined and item.https == 'yes' %}
+      {% if item.ssl_ca_certificate_must_be_trusted is not defined or item.ssl_ca_certificate_must_be_trusted != 'no' %}
       "verify_peer": 1,
+      {% endif %}
+      {% if item.ssl_certificate_must_match_domain is not defined or item.ssl_certificate_must_match_domain != 'no' %}
       "verify_host": 1,
+      {% endif %}
       {% endif %}
       "steps": [
          {% if item.http is not defined or item.http != 'no' %}
