@@ -13,6 +13,7 @@
       "verify_host": 1,
       {% endif %}
       "steps": [
+         {% if item.http is not defined or item.http != 'no' %}
          {
             "name": "HTTP Homepage",
             "url": "http://{{item.url}}",
@@ -22,7 +23,7 @@
             "required": "{{item.expected}}",
             {% endif %}
             "no": 1
-         }{% if item.https is defined and item.https == 'yes' %},
+         },{% endif %}{% if item.https is defined and item.https == 'yes' %}
          {
             "name": "HTTPs Homepage",
             "url": "https://{{item.url}}",
