@@ -22,7 +22,7 @@
             "name": "HTTP Homepage",
             "url": "http://{{item.url}}",
             "status_codes": "{{item.status_codes|default('200')}}",
-            "retrieve_mode": "{% if item.method is defined and item.method == 'GET' %}0{% else %}1{% endif %}",
+            "retrieve_mode": "{% if item.method is defined and item.method == 'GET' or item.required is defined %}0{% else %}1{% endif %}",
             {% if item.required is defined %}
             "required": "{{item.required}}",
             {% endif %}
@@ -32,7 +32,7 @@
             "name": "HTTPs Homepage",
             "url": "https://{{item.url}}",
             "status_codes": "{{item.status_codes|default('200')}}",
-            "retrieve_mode": "{% if item.method is defined and item.method == 'GET' %}0{% else %}1{% endif %}",
+            "retrieve_mode": "{% if item.method is defined and item.method == 'GET' or item.required is defined %}0{% else %}1{% endif %}",
             {% if item.required is defined %}
             "required": "{{item.required}}",
             {% endif %}
