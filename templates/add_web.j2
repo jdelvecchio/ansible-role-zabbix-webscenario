@@ -9,12 +9,12 @@
       "retries": "{{z_retries}}",
       "agent": "{{z_agent}}",
       {% if item.https is defined and item.https == 'yes' %}
-      {% if item.ssl_verify_peer is not defined or item.ssl_verify_peer != 'no' %}
+        {% if item.ssl_verify_peer is not defined or item.ssl_verify_peer != 'no' %}
       "verify_peer": 1,
-      {% endif %}
+        {% endif %}
       {% if item.ssl_verify_host is not defined or item.ssl_verify_host != 'no' %}
       "verify_host": 1,
-      {% endif %}
+        {% endif %}
       {% endif %}
       "steps": [
          {% if item.http is not defined or item.http != 'no' %}
