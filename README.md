@@ -43,7 +43,7 @@ z_websites:
     https: 'yes'                                        #is the website in https ? no by default
     method: 'GET'                                       #http method used, GET or HEAD, HEAD by default
     status_codes: '200,301,302'                         #expected http code returned, 200 by default
-    expected: 'Welcome to mycompany website'            #expected string on the page, method MUST be GET for this to work
+    required: 'Welcome to mycompany website'            #required string on the page, method MUST be GET for this to work
     trigger_tags:                                       #tags to add with the associated trigger
       display: 'yes'
       any_other_tag: 'any_value'
@@ -95,7 +95,7 @@ Example playbook file :
           https: 'yes'
           method: 'GET'
           status_codes: '200,301,302'
-          expected: 'Welcome to mycompany website'
+          required: 'Welcome to mycompany website'
           trigger_tags:
             display: 'yes'
             any_other_tag: 'any_value'

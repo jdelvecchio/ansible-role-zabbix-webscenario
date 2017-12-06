@@ -23,8 +23,8 @@
             "url": "http://{{item.url}}",
             "status_codes": "{{item.status_codes|default('200')}}",
             "retrieve_mode": "{% if item.method is defined and item.method == 'GET' %}0{% else %}1{% endif %}",
-            {% if item.expected is defined %}
-            "required": "{{item.expected}}",
+            {% if item.required is defined %}
+            "required": "{{item.required}}",
             {% endif %}
             "no": 1
          },{% endif %}{% if item.https is defined and item.https == 'yes' %}
@@ -33,8 +33,8 @@
             "url": "https://{{item.url}}",
             "status_codes": "{{item.status_codes|default('200')}}",
             "retrieve_mode": "{% if item.method is defined and item.method == 'GET' %}0{% else %}1{% endif %}",
-            {% if item.expected is defined %}
-            "required": "{{item.expected}}",
+            {% if item.required is defined %}
+            "required": "{{item.required}}",
             {% endif %}
             "no": 2
          }{% endif %}
