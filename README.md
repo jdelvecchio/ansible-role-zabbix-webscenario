@@ -55,8 +55,8 @@ z_websites:
 
     ## Other possible variables to put in z_websites
     http: 'no'                                          #for https-only websites, removes the http step
-    ssl_certificate_must_match_domain: 'no'             #for https websites, disables the checking of the matching between the cn and the domain name of the website (default yes)
-    ssl_ca_certificate_must_be_trusted: 'no'            #for https websites, disables the checking of the root certificate against trusted store (default yes)
+    ssl_verify_peer: 'no'                               #for https websites, disables the checking of the matching between the cn and the domain name of the website (default yes)
+    ssl_verify_host: 'no'                               #for https websites, disables the checking of the root certificate against trusted store (default yes)
 
 ```
 
