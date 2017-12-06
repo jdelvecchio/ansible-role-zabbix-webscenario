@@ -12,7 +12,7 @@
         {% if item.ssl_verify_peer is not defined or item.ssl_verify_peer != 'no' %}
       "verify_peer": 1,
         {% endif %}
-      {% if item.ssl_verify_host is not defined or item.ssl_verify_host != 'no' %}
+        {% if item.ssl_verify_host is not defined or item.ssl_verify_host != 'no' %}
       "verify_host": 1,
         {% endif %}
       {% endif %}
