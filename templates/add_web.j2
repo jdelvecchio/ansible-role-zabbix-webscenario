@@ -8,6 +8,11 @@
       "delay": "{{z_interval}}",
       "retries": "{{z_retries}}",
       "agent": "{{z_agent}}",
+      {% if item.auth is defined %}
+      "authentication": 1,
+      "http_user": "{{item.auth.http_user}}",
+      "http_password": "{{item.auth.http_password}}",
+      {% endif %}
       {% if item.https is defined and item.https == 'yes' %}
         {% if item.ssl_verify_peer is not defined or item.ssl_verify_peer != 'no' %}
       "verify_peer": 1,
