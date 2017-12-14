@@ -48,6 +48,23 @@
   tags:
     - delete
 
+- name: Getting the hostid of the default http poller (via Zabbix API)
+  uri:
+    url: "{{z_url}}"
+    return_content: yes
+    body: "{{lookup('template','templates/get_host.j2')}}"
+    body_format: json
+    headers:
+      Content-Type: "application/json-rpc"
+  register: hostidquery
+  tags:
+    - add
+    
+- name: Parsing the get_site request to extract the hostid
+  set_fact: "z_hostid={{hostidquery.json.result.0.hostid}}"
+  tags:
+    - add
+
 - name: Adding web scenarios (zabbix API handles the indepotency)
   uri:
     url: "{{z_url}}"
