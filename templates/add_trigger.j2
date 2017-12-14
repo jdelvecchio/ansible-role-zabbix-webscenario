@@ -3,7 +3,7 @@
    "method": "trigger.create",
    "params": {
       "description": "Website {{item.name}} is DOWN",
-      "expression": "{% raw %}{{% endraw %}{{z_sourcehost}}:web.test.fail[{{item.name}}].min(3m)}>0",
+      "expression": "{% raw %}{{% endraw %}{{item.monitored_from.name|default(z_sourcehost)}}:web.test.fail[{{item.name}}].min(3m)}>0",
       "priority": 4,
       {% if item.https is defined and item.https == 'yes' %}
       "url": "https://{{item.url}}",

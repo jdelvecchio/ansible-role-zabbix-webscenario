@@ -3,7 +3,7 @@
    "method": "httptest.create",
    "params": {
       "name": "{{item.name}}",
-      "hostid": "{{z_hostid}}",
+      "hostid": "{{item.monitored_from.hostid|default(z_hostid)}}",
       "applicationid": "{{z_applicationid}}",
       "delay": "{{z_interval}}",
       "retries": "{{z_retries}}",
