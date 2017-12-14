@@ -43,6 +43,9 @@ z_websites:
     method: 'GET'                                       #http method used, GET or HEAD, HEAD by default
     status_codes: '200,301,302'                         #expected http code returned, 200 by default
     required: 'Welcome to mycompany website'            #required string on the page, method MUST be GET for this to work
+    auth:                                               #for websites that require basic HTTP authentication
+      http_user: 'jim'                                  
+      http_password: 'jimspassword'
     trigger_tags:                                       #tags to add with the associated trigger
       display: 'yes'
       any_other_tag: 'any_value'
