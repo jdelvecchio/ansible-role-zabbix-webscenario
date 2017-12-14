@@ -56,6 +56,10 @@ z_websites:
     state: present
 
     ## Other possible variables to put in z_websites
+    monitored_from:                                     #attaches the web scenario on another host than z_sourcehost
+      name: 'some_other_host'
+      hostid: 4567
+      applicationid: 1234
     http: 'no'                                          #for https-only websites, removes the http step
     ssl_verify_peer: 'no'                               #for https websites, disables the checking of the matching between the cn and the domain name of the website (default yes)
     ssl_verify_host: 'no'                               #for https websites, disables the checking of the root certificate against trusted store (default yes)
