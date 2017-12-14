@@ -19,12 +19,11 @@ Here is the list of all variables and their default values :
 ```yaml
 
 # Authentification to API
-z_user: api_ansible                                     #zabbix user to authenticate with API, must have access to the z_hostid
+z_user: api_ansible                                     #zabbix user to authenticate with API, must have access to the z_sourcehost
 z_password: 'strongpassword'                            #zabbix user password
 z_url: 'https://zabbix.mycompany.com/api_jsonrpc.php'   #zabbix URL
 
 # Common variables to all webscenarios
-z_hostid: 10084                                         #hostid of the sourcehost from where the web scenarios will be executed (must be already created)
 z_sourcehost: "zabbixproxy01"                           #name of the sourcehost from where the web scenarios will be executed (must be already created)
 z_applicationid: 1457                                   #application id of the application (category like) (must be already created)
 z_interval: 30                                          #default interval of execution of the web scenarios
@@ -81,7 +80,6 @@ Example playbook file :
       z_password: 'strongpassword'
     
       z_url: 'https://zabbix.mycompany.com/api_jsonrpc.php'
-      z_hostid: 10084
       z_sourcehost: "scasrvzbx01pp"
       z_applicationid: 1457
       z_interval: 30
