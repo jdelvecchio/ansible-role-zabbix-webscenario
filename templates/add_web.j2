@@ -3,8 +3,13 @@
    "method": "httptest.create",
    "params": {
       "name": "{{item.name}}",
-      "hostid": "{{item.monitored_from.hostid|default(z_hostid)}}",
+      {% if item.monitored_from is defined %}
+      "hostid": "{{item.monitored_from.hostid}}",
+      "applicationid": "{{item.monitored_from.applicationid}}",
+      {% else %}
+      "hostid": "{{z_hostid}}",
       "applicationid": "{{z_applicationid}}",
+      {% endif %}
       "delay": "{{z_interval}}",
       "retries": "{{z_retries}}",
       "agent": "{{z_agent}}",
