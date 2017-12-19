@@ -3,8 +3,8 @@
    "method": "trigger.create",
    "params": {
       "description": "Website {{item.name}} is DOWN",
-      {% if item.monitored_from is defined %}
-      "expression": "{% raw %}{{% endraw %}{{item.monitored_from.name}}:web.test.fail[{{item.name}}].min(3m)}>0",
+      {% if item.zabbix_host is defined %}
+      "expression": "{% raw %}{{% endraw %}{{item.zabbix_host.name}}:web.test.fail[{{item.name}}].min(3m)}>0",
       {% else %}
       "expression": "{% raw %}{{% endraw %}{{z_host}}:web.test.fail[{{item.name}}].min(3m)}>0",
       {% endif %}

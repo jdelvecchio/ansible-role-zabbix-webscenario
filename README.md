@@ -56,7 +56,7 @@ z_websites:
     state: present
 
     ## Other possible variables to put in z_websites
-    monitored_from:                                     #attaches the web scenario on another host than z_host
+    zabbix_host:                                       #attaches the web scenario on another host than z_host
       name: 'some_other_host'
       hostid: 4567
       applicationid: 1234
