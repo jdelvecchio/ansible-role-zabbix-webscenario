@@ -3,7 +3,7 @@ z_user: api_ansible
 z_password: 'strongpassword'
 
 z_url: 'https://zabbix.mycompany.com/api_jsonrpc.php'
-z_sourcehost: "zabbixproxy01"
+z_host: "zabbixproxy01"
 z_applicationid: 1457
 z_interval: 30
 z_retries: 5
