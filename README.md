@@ -24,8 +24,8 @@ z_password: 'strongpassword'                            #zabbix user password
 z_url: 'https://zabbix.mycompany.com/api_jsonrpc.php'   #zabbix URL
 
 # Common variables to all webscenarios
-z_host: "zabbixproxy01"                                 #name of the zabbix host to which the scenario will be attached to (must be allready created)
-z_applicationid: 1457                                   #application id of the application (category like) (must be already created)
+z_host: "zabbixproxy01"                                 #default name of the zabbix host to which the scenario will be attached to (must be allready created)
+z_applicationid: 1457                                   #default application id of the application (category like) (must be already created, and attached to z_host)
 z_interval: 30                                          #default interval of execution of the web scenarios
 z_retries: 5                                            #default maximum number of retries
 z_agent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36' #useragent used by zabbix
