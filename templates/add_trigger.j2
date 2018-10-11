@@ -2,7 +2,7 @@
    "jsonrpc": "2.0",
    "method": "trigger.create",
    "params": {
-      "description": "Website {{item.name}} is DOWN",
+      "description": "Website {{item.name}}",
       {% if item.zabbix_host is defined %}
       "expression": "{% raw %}{{% endraw %}{{item.zabbix_host.name}}:web.test.fail[{{item.name}}].min(3m)}>0",
       {% else %}
