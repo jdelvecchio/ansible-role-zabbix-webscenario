@@ -13,6 +13,12 @@ For each entry in the 'z_websites' variable with state: absent, this role will :
 
 For any update of an existing web scenario, it must first be deleted (manually or by changing its state to absent, executing the playbook, then changing it back to 'present')
 
+### Zabbix versions
+This role was tested and validated with :
+* Zabbix 3.2
+* Zabbix 3.4
+* Zabbix 4.0
+
 ### Variables
 
 Here is the list of all variables and their default values :
